@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brunel Cyber Security Society</title>
+<meta name="description" content="Hands-on hacking workshops, CTF competitions and industry talks at Brunel University London. No experience required.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:title" content="Brunel Cyber Security Society">
+<meta property="og:description" content="Hands-on hacking workshops, CTF competitions and industry talks at Brunel University London. No experience required.">
+<meta property="og:type" content="website">
+<!-- Link preview image is ready at assets/og-image.png. Once hosted, add:
+     <meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.png">
+     (OG images must use the full absolute URL, so this needs your real domain.) -->
+<meta name="theme-color" content="#0B0B0D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!-- Curious? Good. BRUNEL{v1ew_s0urce_h4cker} — bring this to a workshop. -->
+
+<nav>
+  <a class="brand" href="index.html">brunel_cybersec&gt;<span class="cursor"></span></a>
+  <button class="menu-btn" aria-expanded="false" aria-label="Open menu">[menu]</button>
+  <div class="nav-links">
+    <a href="index.html#about">about</a>
+    <a href="events.html">events</a>
+    <a href="blog.html">blog</a>
+    <a href="resources.html">resources</a>
+    <a href="committee.html">committee</a>
+    <a href="index.html#join">join</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <canvas id="waves" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="eyebrow">// brunel university london</p>
+    <h1><span class="ghost" data-text="Cyber Security"><span>Cyber Security</span></span><br>Society</h1>
+    <p class="hero-sub">Hands-on hacking workshops, CTF competitions and industry talks. Open to every course and every skill level — including zero.</p>
+    <div class="cta-row">
+      <a class="btn solid" href="#join">Join the society</a>
+      <a class="btn ghost-btn" href="events.html">See what's on</a>
+    </div>
+  </div>
+  <p class="scroll-hint">scroll ↓</p>
+</header>
+
+<section class="reveal" id="about">
+  <div class="section-head">
+    <span class="tag">01</span>
+    <h2>What we do</h2>
+  </div>
+  <p class="about-copy">We're a student-run society for anyone curious about how systems break — and how to defend them. Each week we run <strong>practical workshops</strong> covering everything from web exploitation to digital forensics, compete in <strong>national CTF events</strong>, and host <strong>speakers from industry</strong> to talk careers, certifications and real-world security work.</p>
+  <div class="stats">
+    <div class="stat"><div class="num">120+</div><div class="label">active members</div></div>
+    <div class="stat"><div class="num">24</div><div class="label">workshops per year</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">CTF competitions entered</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">experience required</div></div>
+  </div>
+</section>
+
+<section class="reveal" id="events">
+  <div class="section-head">
+    <span class="tag">02</span>
+    <h2>Upcoming events</h2>
+  </div>
+  <div id="home-events"></div>
+  <p style="margin-top: 28px;"><a class="btn ghost-btn" href="events.html">Full programme + CTF team →</a></p>
+</section>
+
+<section class="reveal" id="join">
+  <div class="join-box">
+    <h2>Ready to start hacking?</h2>
+    <p>Membership is through the Brunel Students' Union. Join the Discord first if you want to lurk before committing — everyone does.</p>
+    <div class="cta-row">
+      <a class="btn solid" href="https://brunelstudents.com" target="_blank" rel="noopener">Join via the Union</a>
+      <a class="btn ghost-btn" href="https://discord.com/invite/YUXxSN5k" target="_blank" rel="noopener">Join the Discord</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Brunel Cyber Security Society</span>
+  <div class="links">
+    <a href="https://discord.com/invite/YUXxSN5k" target="_blank" rel="noopener">discord</a>
+    <a href="https://www.instagram.com/cybersoc.brunel/" target="_blank" rel="noopener">instagram</a>
+    <a href="#">github</a>
+    <a href="mailto:cybersec@brunel.ac.uk">email</a>
+  </div>
+</footer>
+
+<script src="js/waves.js"></script>
+<script src="js/data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
