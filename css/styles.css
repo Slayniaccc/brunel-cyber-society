@@ -822,3 +822,27 @@ footer .links a { position: relative; transition: color 0.2s; }
   .event, .resource-row, .btn { transition: none; }
   .event:hover, .resource-row:hover, .btn:hover { transform: none; }
 }
+
+/* Coming Soon Box */
+.coming-soon-box {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  background: var(--surface);
+  text-align: center;
+}
+
+.coming-soon-box .terminal-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.coming-soon-box .terminal-prompt {
+  color: var(--cool);
+}
+
+.coming-soon-box .terminal-prompt::before {
+  content: '>';
+  margin-right: 0.5rem;
+}
