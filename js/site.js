@@ -57,4 +57,54 @@
     'color:#6FC9D8;font-family:monospace;font-weight:bold;',
     'color:#8E8B8F;font-family:monospace;'
   );
+
+  /* ----- featured event drawer ----- */
+  const featuredEvent = document.querySelector('[data-featured-event]');
+  if (featuredEvent) {
+    const toggle = featuredEvent.querySelector('[data-event-toggle]');
+    const close = document.querySelector('[data-event-close]');
+    const drawer = featuredEvent.querySelector('[data-event-drawer]');
+    const panel = drawer ? drawer.querySelector('.featured-event__drawer-panel') : null;
+    let lastFocused = null;
+
+    if (toggle && close && drawer && panel) {
+      const setOpen = function (open) {
+        featuredEvent.classList.toggle('is-open', open);
+        drawer.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+        toggle.textContent = open ? 'Close details' : 'Read more';
+        document.body.classList.toggle('drawer-open', open);
+
+        if (open) {
+          lastFocused = document.activeElement;
+          close.focus();
+        } else if (lastFocused && typeof lastFocused.focus === 'function') {
+          lastFocused.focus();
+        } else {
+          toggle.focus();
+        }
+      };
+
+      toggle.addEventListener('click', function () {
+        setOpen(!featuredEvent.classList.contains('is-open'));
+      });
+      close.addEventListener('click', function () {
+        setOpen(false);
+      });
+      drawer.addEventListener('click', function (e) {
+        if (e.target === drawer) {
+          setOpen(false);
+        }
+      });
+      panel.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && featuredEvent.classList.contains('is-open')) {
+          setOpen(false);
+        }
+      });
+    }
+  }
 })();
