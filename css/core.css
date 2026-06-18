@@ -156,10 +156,20 @@ footer {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12.5px;
   color: var(--muted);
+  position: relative;
 }
 footer a:hover { color: var(--text); }
 footer .links { display: flex; gap: 24px; }
 footer .links a { position: relative; transition: color 0.2s; }
+
+@media (min-width: 721px) {
+  footer .links {
+    position: absolute;
+    right: 40px;
+    bottom: 34px;
+  }
+}
+}
 
 /* ---- MOBILE MENU ---- */
 .menu-btn {
@@ -326,5 +336,5 @@ header.hero::after {
   section { padding: 56px 20px; }
   .page-head { padding: 120px 20px 24px; }
   footer { padding: 28px 20px; flex-direction: column; text-align: center; }
-  footer .links { justify-content: center; }
+  footer .links { justify-content: center; position: static; }
 }
