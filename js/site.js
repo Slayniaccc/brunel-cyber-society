@@ -1,34 +1,71 @@
 /* Shared behaviour for every page:
-   mobile menu, scroll reveals, and a small reward for the curious. */
+   mobile menu, sticky-nav state, button ripple, scroll reveals,
+   and a small reward for the curious. */
 
 (function () {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   /* ----- mobile menu ----- */
   const btn = document.querySelector('.menu-btn');
   const links = document.querySelector('.nav-links');
   if (btn && links) {
-    btn.addEventListener('click', function () {
-      const open = links.classList.toggle('open');
+    const setMenu = function (open) {
+      links.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.textContent = open ? '[close]' : '[menu]';
       document.body.classList.toggle('menu-open', open);
+    };
+    btn.addEventListener('click', function () {
+      setMenu(!links.classList.contains('open'));
     });
     links.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        links.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.textContent = '[menu]';
-        document.body.classList.remove('menu-open');
-      }
+      if (e.target.tagName === 'A') setMenu(false);
+    });
+    /* Escape closes the menu for keyboard users */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && links.classList.contains('open')) setMenu(false);
+    });
+  }
+
+  /* ----- nav: compact + elevate once the page scrolls ----- */
+  const navEl = document.querySelector('nav');
+  if (navEl) {
+    const onScroll = function () {
+      navEl.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ----- button click ripple ----- */
+  /* Drop a circle at the pointer that scales up and fades out (CSS animates
+     it; we only place it and clean it up). Skipped for disabled buttons and
+     when the user prefers reduced motion. */
+  if (!reduceMotion) {
+    document.addEventListener('click', function (e) {
+      const target = e.target.closest('.btn');
+      if (!target || target.classList.contains('disabled')) return;
+      const rect = target.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      /* keyboard activation reports (0,0): fall back to the button centre */
+      const x = e.clientX || rect.left + rect.width / 2;
+      const y = e.clientY || rect.top + rect.height / 2;
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (x - rect.left - size / 2) + 'px';
+      ripple.style.top = (y - rect.top - size / 2) + 'px';
+      ripple.addEventListener('animationend', function () { ripple.remove(); });
+      target.appendChild(ripple);
     });
   }
 
   /* ----- scroll reveals with staggered children ----- */
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealEls = document.querySelectorAll('.reveal');
 
-  /* items inside a section that should cascade in one after another */
+  /* items inside a section that cascade in one after another */
   revealEls.forEach(function (el) {
-    const items = el.querySelectorAll('.stat, .event, .member, .repo, .resource-row');
+    const items = el.querySelectorAll('.stat, .event, .member, .repo, .resource-row, .post-card, .learn-card');
     items.forEach(function (item, i) {
       item.classList.add('stagger');
       item.style.transitionDelay = (120 + i * 80) + 'ms';
@@ -57,55 +94,4 @@
     'color:#6FC9D8;font-family:monospace;font-weight:bold;',
     'color:#8E8B8F;font-family:monospace;'
   );
-
-  /* ----- featured event drawer ----- */
-  const featuredEvent = document.querySelector('[data-featured-event]');
-  if (featuredEvent) {
-    const toggle = featuredEvent.querySelector('[data-event-toggle]');
-    const close = document.querySelector('[data-event-close]');
-    const drawer = featuredEvent.querySelector('[data-event-drawer]');
-    const panel = drawer ? drawer.querySelector('.featured-event__drawer-panel') : null;
-    let lastFocused = null;
-
-    if (toggle && close && drawer && panel) {
-      const setOpen = function (open) {
-        featuredEvent.classList.toggle('is-open', open);
-        drawer.classList.toggle('is-open', open);
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-        toggle.textContent = open ? 'Close details' : 'Read more';
-        document.body.classList.toggle('drawer-open', open);
-
-        if (open) {
-          lastFocused = document.activeElement;
-          close.focus();
-        } else if (lastFocused && typeof lastFocused.focus === 'function') {
-          lastFocused.focus();
-        } else {
-          toggle.focus();
-        }
-      };
-
-      toggle.addEventListener('click', function () {
-        setOpen(!featuredEvent.classList.contains('is-open'));
-      });
-      close.addEventListener('click', function () {
-        setOpen(false);
-      });
-      drawer.addEventListener('click', function (e) {
-        if (e.target === drawer) {
-          setOpen(false);
-        }
-      });
-      panel.addEventListener('click', function (e) {
-        e.stopPropagation();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && featuredEvent.classList.contains('is-open')) {
-          setOpen(false);
-        }
-      });
-    }
-  }
-  
 })();

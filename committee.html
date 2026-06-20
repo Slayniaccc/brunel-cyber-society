@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Committee — Brunel Cyber Security Society</title>
+<title>Committee · Brunel Cyber Security Society</title>
 <meta name="description" content="Meet the students who keep the society running.">
-<link rel="icon" type="image/svg+xml" href="Images/logo.png">
-<meta property="og:title" content="Committee — Brunel Cyber Security Society">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:title" content="Committee · Brunel Cyber Security Society">
 <meta property="og:description" content="Meet the students who keep the society running.">
 <meta property="og:type" content="website">
 <!-- Link preview image is ready at assets/og-image.png. Once hosted, add:
@@ -16,86 +16,63 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="css/core.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/styles.css">
+<script>try{if(sessionStorage.getItem("booted"))document.documentElement.classList.add("booted");}catch(e){}</script>
 </head>
-<body>
-<!-- Curious? Good. BRUNEL{v1ew_s0urce_h4cker} — bring this to a workshop. -->
+<body class="wave-bg">
+<!-- Curious? Good. BRUNEL{v1ew_s0urce_h4cker}. Bring this to a workshop. -->
+<div id="preloader" role="status" aria-label="Loading">
+  <div class="pl-inner">
+    <div class="pl-dots"><span></span><span></span><span></span></div>
+    <pre class="pl-log"></pre>
+    <div class="pl-bar"><span class="pl-fill"></span></div>
+    <div class="pl-meta"><span class="pl-status">booting</span><span class="pl-pct">0%</span></div>
+    <div class="pl-brand"><span class="pl-brand-text">brunel_cybersec</span><span class="pl-cursor">_</span></div>
+  </div>
+</div>
+<canvas id="waves" class="bg-waves" data-variant="b" aria-hidden="true"></canvas>
 
 <nav>
   <a class="brand" href="index.html">brunel_cybersec&gt;<span class="cursor"></span></a>
-  <button class="menu-btn" aria-expanded="false" aria-label="Open menu">[menu]</button>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-label="Open menu">[menu]</button>
   <div class="nav-links">
     <a href="index.html#about">about</a>
     <a href="events.html">events</a>
     <a href="blog.html">blog</a>
     <a href="resources.html">resources</a>
     <a href="committee.html" aria-current="page">committee</a>
-    <a href="index.html#join">join</a>
+    <a href="contact.html">contact</a>
+    <a class="nav-cta" href="index.html#join">join</a>
   </div>
 </nav>
 
 <div class="page-head">
-  <p class="crumbs">03 · committee</p>
-  <h1>Committee</h1>
-  <p class="lede">The students who keep the society running. Want to get involved? Committee elections happen every spring come to any event and ask us about it.</p>
+  <p class="crumbs">05 · committee</p>
+  <h1><span class="ghost" data-text="Committee"><span>Committee</span></span></h1>
+  <p class="lede">The students who keep the society running. Want to get involved? Committee elections happen every spring, so come to any event and ask us about it.</p>
 </div>
 
 <section class="tight reveal">
-  <div class="member-grid">
-    <!-- President -->
-    <div class="member warm">
-      <img src="Images/pfp_Mohammed.png" alt="Mohammed Zuoriki" class="avatar" style="width: 120px; height: 120px; border-radius: 12px; object-fit: cover; margin: 0 auto 16px; display: block;">
-      <h3>Mohammed Zuoriki</h3>
-      <p class="role">president</p>
-      <p>Leads the society, chairs committee meetings, and represents Brunel in national cyber security competitions.</p>
-      <a href="https://www.linkedin.com/in/mohammed-zuoriki-856133250/" class="btn ghost-btn" style="margin-top: 16px; font-size: 13px; padding: 10px 20px;">LinkedIn</a>
-    </div>
-    
-    <!-- Treasurer -->
-    <div class="member cool">
-      <img src="Images/31e2b275-c431-4d06-91fb-b0bf63b604df 2.JPG" alt="Parmbir Singh Nandha" class="avatar" style="width: 120px; height: 120px; border-radius: 12px; object-fit: cover; margin: 0 auto 16px; display: block;">
-      <h3>Parmbir Singh Nandha</h3>
-      <p class="role">treasurer</p>
-      <p>Manages the society budget, secures sponsorships, and keeps the pizza funded.</p>
-      <a href="https://www.linkedin.com/in/parmbir-nandha-940987315/" class="btn ghost-btn" style="margin-top: 16px; font-size: 13px; padding: 10px 20px;">LinkedIn</a>
-    </div>
-    
-    <!-- Secretary -->
-    <div class="member warm">
-      <img src="Images/Abdirahman_pfp.jpg" alt="Abdirahman Abdikadir" class="avatar" style="width: 120px; height: 120px; border-radius: 12px; object-fit: cover; margin: 0 auto 16px; display: block;">
-      <h3>Abdirahman Abdikadir</h3>
-      <p class="role">secretary</p>
-      <p>Handles membership, communications, and keeps the society running smoothly.</p>
-      <a href="#" class="btn ghost-btn" style="margin-top: 16px; font-size: 13px; padding: 10px 20px;">LinkedIn</a>
-    </div>
-  </div>
+  <!-- Members are managed in js/data.js (the "committee" list). See HOW-TO-EDIT.md. -->
+  <div class="member-grid" id="committee-list"></div>
 </section>
 
 <footer>
   <span>© 2026 Brunel Cyber Security Society x CyberTutor</span>
   <div class="links">
-  <a href="https://discord.gg/3XpK4fjxDy" target="_blank" rel="noopener">
-    <i class="fab fa-discord"></i> discord
-  </a>
-  <a href="https://www.instagram.com/cybersoc.brunel/" target="_blank" rel="noopener">
-    <i class="fab fa-instagram"></i> instagram
-  </a>
-  <a href="https://github.com/Slayniaccc/brunel-cyber-society" target="_blank" rel="noopener">
-    <i class="fab fa-github"></i> github
-  </a>
-   <a href="https://www.youtube.com/channel/UCSh-pF9Qp3Pn0QbK0UDMLLw" target="_blank" rel="noopener">
-      <i class="fab fa-youtube"></i> youtube
-    </a>
-
-  <a href="mailto:cybersec@brunel.ac.uk">
-    <i class="fas fa-envelope"></i> email
-  </a>
-</div>
+    <a href="https://discord.com/invite/YUXxSN5k" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.8 16.8 0 0 0 15.1 4l-.2.42a15.6 15.6 0 0 1 3.7 1.2 15.9 15.9 0 0 0-13.2 0 15.6 15.6 0 0 1 3.7-1.2L8.9 4a16.8 16.8 0 0 0-4.17 1.33C2.1 9.24 1.38 13.05 1.74 16.8a16.9 16.9 0 0 0 5.1 2.58l.65-.9a10 10 0 0 1-1.7-.82l.42-.32a11.3 11.3 0 0 0 9.6 0l.42.32c-.54.32-1.1.6-1.7.82l.65.9a16.9 16.9 0 0 0 5.1-2.58c.42-4.35-.72-8.13-2.99-11.47zM8.9 14.66c-.99 0-1.8-.92-1.8-2.04s.79-2.04 1.8-2.04 1.82.93 1.8 2.04c0 1.12-.79 2.04-1.8 2.04zm6.65 0c-.99 0-1.8-.92-1.8-2.04s.79-2.04 1.8-2.04 1.82.93 1.8 2.04c0 1.12-.79 2.04-1.8 2.04z"/></svg>discord</a>
+    <a href="https://www.instagram.com/cybersoc.brunel/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>instagram</a>
+    <a href="https://github.com/brunel-cybersec" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>github</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.76-1.77C19.26 5.13 12 5.13 12 5.13s-7.26 0-8.84.4A2.5 2.5 0 0 0 1.4 7.3 26 26 0 0 0 1 12a26 26 0 0 0 .4 4.7 2.5 2.5 0 0 0 1.76 1.77c1.58.4 8.84.4 8.84.4s7.26 0 8.84-.4a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 23 12zM9.75 15.02V8.98L15.5 12z"/></svg>youtube</a>
+    <a href="mailto:cybersec@brunel.ac.uk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg>email</a>
+  </div>
+  <p class="footer-credit">Designed and built by the <a href="credits.html">Brunel Cyber Security committee</a>.</p>
 </footer>
 
+<script src="js/data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/waves.js"></script>
+<script src="js/preloader.js"></script>
 <script src="js/site.js"></script>
 </body>
 </html>

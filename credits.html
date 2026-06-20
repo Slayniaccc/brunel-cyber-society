@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brunel Cyber Security Society</title>
-<meta name="description" content="Hands-on hacking workshops, CTF competitions and industry talks at Brunel University London. No experience required.">
+<title>Credits · Brunel Cyber Security Society</title>
+<meta name="description" content="Who built the Brunel Cyber Security Society website, and what it's made with.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta property="og:title" content="Brunel Cyber Security Society">
-<meta property="og:description" content="Hands-on hacking workshops, CTF competitions and industry talks at Brunel University London. No experience required.">
+<meta property="og:title" content="Credits · Brunel Cyber Security Society">
+<meta property="og:description" content="Who built the Brunel Cyber Security Society website, and what it's made with.">
 <meta property="og:type" content="website">
-<!-- Link preview image is ready at assets/og-image.png. Once hosted, add:
-     <meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.png">
-     (OG images must use the full absolute URL, so this needs your real domain.) -->
 <meta name="theme-color" content="#0B0B0D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +16,7 @@
 <link rel="stylesheet" href="css/styles.css">
 <script>try{if(sessionStorage.getItem("booted"))document.documentElement.classList.add("booted");}catch(e){}</script>
 </head>
-<body class="home">
+<body class="wave-bg">
 <!-- Curious? Good. BRUNEL{v1ew_s0urce_h4cker}. Bring this to a workshop. -->
 <div id="preloader" role="status" aria-label="Loading">
   <div class="pl-inner">
@@ -30,6 +27,7 @@
     <div class="pl-brand"><span class="pl-brand-text">brunel_cybersec</span><span class="pl-cursor">_</span></div>
   </div>
 </div>
+<canvas id="waves" class="bg-waves" data-variant="b" aria-hidden="true"></canvas>
 
 <nav>
   <a class="brand" href="index.html">brunel_cybersec&gt;<span class="cursor"></span></a>
@@ -45,51 +43,51 @@
   </div>
 </nav>
 
-<header class="hero">
-  <canvas id="waves" aria-hidden="true"></canvas>
-  <div class="hero-inner">
-    <p class="eyebrow">// brunel university london</p>
-    <h1><span class="ghost" data-text="Cyber Security"><span>Cyber Security</span></span><br>Society</h1>
-    <p class="hero-sub">Hands-on hacking workshops, CTF competitions and industry talks. Open to every course and every skill level, including zero.</p>
-    <div class="cta-row">
-      <a class="btn solid" href="#join">Join the society</a>
-      <a class="btn ghost-btn" href="events.html">See what's on</a>
-    </div>
-  </div>
-  <p class="scroll-hint">scroll ↓</p>
-</header>
+<div class="page-head">
+  <p class="crumbs">07 · credits</p>
+  <h1><span class="ghost" data-text="Credits"><span>Credits</span></span></h1>
+  <p class="lede">This site is a student project, built and maintained by the society. Here's who made it and what it runs on.</p>
+</div>
 
-<section class="reveal" id="about">
+<section class="tight reveal">
   <div class="section-head">
-    <span class="tag">01</span>
-    <h2>What we do</h2>
+    <span class="tag">//</span>
+    <h2>Built by</h2>
   </div>
-  <p class="about-copy">We're a student-run society for anyone curious about how systems break and how to defend them. Each week we run <strong>practical workshops</strong> covering everything from web exploitation to digital forensics, compete in <strong>national CTF events</strong>, and host <strong>speakers from industry</strong> to talk careers, certifications and real-world security work.</p>
-  <div class="stats">
-    <div class="stat"><div class="num">Est. 2026</div><div class="label">founded</div></div>
-    <div class="stat"><div class="num">3</div><div class="label">committee members</div></div>
-    <div class="stat"><div class="num">0</div><div class="label">experience required</div></div>
-    <div class="stat"><div class="num">soon</div><div class="label">first workshop</div></div>
+  <div class="resource-row">
+    <span class="name">Design &amp; build</span>
+    <p>The Brunel Cyber Security Society committee. Want to help shape it? The whole site is open source, and a first pull request makes a great intro to the team.</p>
+  </div>
+  <div class="resource-row">
+    <span class="name">Maintained by</span>
+    <p>The current committee. Contact details and roles live on the <a href="committee.html">committee page</a>.</p>
   </div>
 </section>
 
-<section class="reveal" id="events">
+<section class="reveal" style="padding-top: 0;">
   <div class="section-head">
-    <span class="tag">02</span>
-    <h2>Upcoming events</h2>
+    <span class="tag">//</span>
+    <h2>Made with</h2>
   </div>
-  <div id="home-events"></div>
-  <p style="margin-top: 28px;"><a class="btn ghost-btn" href="events.html">Full programme + CTF team →</a></p>
-</section>
-
-<section class="reveal" id="join">
-  <div class="join-box">
-    <h2>Ready to start hacking?</h2>
-    <p>Membership is through the Brunel Students' Union. Join the Discord first if you want to lurk before committing. Everyone does.</p>
-    <div class="cta-row">
-      <a class="btn solid" href="https://brunelstudents.com" target="_blank" rel="noopener">Join via the Union</a>
-      <a class="btn ghost-btn" href="https://discord.com/invite/YUXxSN5k" target="_blank" rel="noopener">Join the Discord</a>
-    </div>
+  <div class="resource-row">
+    <span class="name">Code</span>
+    <p>Plain HTML, CSS and JavaScript. No framework, no build step, no tracking. Just the open web.</p>
+  </div>
+  <div class="resource-row">
+    <span class="name">Type</span>
+    <p>Space Grotesk for headings, Inter for body, JetBrains Mono for the terminal-flavoured bits, all from Google Fonts.</p>
+  </div>
+  <div class="resource-row">
+    <span class="name">Wave background</span>
+    <p>A custom HTML canvas animation drawn in real time, pausing itself when off screen to save battery.</p>
+  </div>
+  <div class="resource-row">
+    <span class="name">Icons</span>
+    <p>Hand-drawn inline SVGs, kept lightweight so nothing extra is loaded.</p>
+  </div>
+  <div class="resource-row">
+    <span class="name">Source</span>
+    <p>Open source on <a href="https://github.com/brunel-cybersec" target="_blank" rel="noopener">GitHub</a>. Fork it, break it, send improvements.</p>
   </div>
 </section>
 
@@ -106,8 +104,6 @@
 </footer>
 
 <script src="js/waves.js"></script>
-<script src="js/data.js"></script>
-<script src="js/render.js"></script>
 <script src="js/preloader.js"></script>
 <script src="js/site.js"></script>
 </body>

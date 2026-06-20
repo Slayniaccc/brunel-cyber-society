@@ -1,57 +1,57 @@
-# 🔐 Brunel Cybersecurity Society Website
+# Brunel Cyber Security Society — website
 
-[![Live Demo](https://img.shields.io/badge/demo-live_site-6FC9D8?style=for-the-badge&logo=githubpages&logoColor=white)](https://Slayniaccc.github.io/brunel-cyber-society/)
-[![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+A three-page static site. No build tools, no frameworks — just HTML, CSS and a little JavaScript.
 
-The official website for Brunel University London's Cybersecurity Society. Built for a brand new society (Est. 2026) with a terminal-style hacker aesthetic, modular content management, and responsive design.
+## Structure
 
-**Live site:** [Slayniaccc.github.io/brunel-cyber-society](https://Slayniaccc.github.io/brunel-cyber-society/)
+```
+brunel-site/
+├── index.html        homepage (hero, about, events preview, join)
+├── events.html       full programme + CTF team
+├── committee.html    member cards
+├── css/
+│   └── styles.css    shared styles for every page
+└── js/
+    └── waves.js      animated wireframe wave hero background
+```
 
----
+## Open it in VS Code
 
-## 📋 About
+1. Open VS Code → File → Open Folder → choose `brunel-site`
+2. Install the **Live Server** extension (by Ritwick Dey) from the Extensions panel
+3. Right-click `index.html` → **Open with Live Server**
+4. The site opens in your browser and auto-reloads every time you save a file
 
-This website serves as the online home for Brunel's Cybersecurity Society. It provides information about:
+(You can also just double-click `index.html` to open it in a browser — Live Server is only nicer because of the auto-reload.)
 
-- **Who we are** – Committee members and society mission
-- **What we do** – Workshops, CTF competitions, guest talks
-- **Resources** – Learning platforms and open-source tools
-- **Blog** – CTF writeups and society news (coming soon)
-- **How to join** – Free membership for 2026/27
+## Things to update before launch
 
-The site is designed to be easy for non-technical committee members to update events and blog posts without touching HTML.
+- Event dates, rooms and titles in `index.html` and `events.html`
+- Committee names and initials in `committee.html`
+- The Discord, Instagram and GitHub links in every footer (currently `#`)
+- The Union membership link in `index.html`
+- The stats numbers (members, rankings) — keep them honest!
 
----
+## Design tokens
 
-## 🛠 Tech Stack
+Everything lives as CSS variables at the top of `css/styles.css`:
 
-| Technology | Purpose |
-| :--- | :--- |
-| **HTML5** | Page structure and semantic markup |
-| **CSS3** | Styling, animations, responsive design |
-| **JavaScript** | Dynamic content rendering, mobile menu, wave animation |
-| **GitHub Pages** | Free hosting and deployment |
+| token       | value     | use                              |
+|-------------|-----------|----------------------------------|
+| `--bg`      | `#0B0B0D` | page background                  |
+| `--surface` | `#131316` | cards, raised bands              |
+| `--line`    | `#26262B` | borders, dividers                |
+| `--text`    | `#E9E6E3` | headings, primary text           |
+| `--muted`   | `#8E8B8F` | body copy, secondary text        |
+| `--warm`    | `#E08A6D` | accent — ctf tags, glitch effect |
+| `--cool`    | `#6FC9D8` | accent — workshop tags, glitch   |
 
-**Design tokens:**
-- Black background (`#0B0B0D`)
-- White/grey text (`#E9E6E3` / `#8E8B8F`)
-- Terminal accents in teal (`#6FC9D8`) and orange (`#E08A6D`)
+Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (terminal-flavoured accents) — loaded from Google Fonts.
 
----
+## Free hosting when you're ready
 
-## 🧠 Key Features
+GitHub Pages, Netlify or Cloudflare Pages all host static sites like this for free — drag the folder in and you're live.
 
-| Feature | Description |
-| :--- | :--- |
-| **Terminal-style hero** | Typing effect and command-line aesthetic from Version 3 |
-| **Animated wave background** | Canvas-based wireframe waves with chromatic aberration |
-| **Modular content management** | Events and blog posts stored in `data.js` – edit one file, updates everywhere |
-| **Responsive design** | Works on mobile, tablet, and desktop |
-| **Committee page** | Real member names and student IDs |
-| **Coming soon placeholders** | Honest messaging for a new society with no events yet |
+## Updating events and blog posts (the easy way)
 
----
-
-## 🧩 Project Structure
+All events and blog posts live in **`js/data.js`** — one file, plain text lists with instructions at the top. Add, edit, or delete the `{ ... }` blocks and save; the homepage, events page, and blog all update themselves. The homepage always shows the first 3 events, and the first blog post in the list becomes the featured card.
