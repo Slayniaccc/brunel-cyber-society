@@ -43,8 +43,8 @@ window.SITE_DATA = {
         cap:   "OUR FIRST COLLABORATION EVENT",
         title: "Freshers Week 2026",
         desc:  "We're opening the year with a freshers collaboration built to welcome new faces, show off the society, and kick things off with a proper first impression.",
-        img:   "assets/freshers.jpg",
-        link:  "#"
+        img:   "assets/freshers.png",
+        link:  "https://brunel.native.fm/event/brunel-freshers-2026/284387"
       }
     },
     {
@@ -59,7 +59,7 @@ window.SITE_DATA = {
         cap:   "FIRST SOCIAL OF THE YEAR",
         title: "Meet and Greet",
         desc:  "An informal evening to meet the committee and fellow members, hear what's planned for the year, and settle in before the workshops kick off. Snacks, introductions and zero pressure.",
-        img:   "assets/meetandgreet.jpg",
+        img:   "assets/meet_and_greet.jpg",
         link:  "#"
       }
     }
