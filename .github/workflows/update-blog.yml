@@ -1,0 +1,38 @@
+name: Sync blog from CyberTutor
+
+# Keeps blog.html in step with the CyberTutor Substack with zero manual work.
+# Runs once a day (and on demand), pulls the latest posts into js/data.js, and
+# commits only if something actually changed.
+
+on:
+  schedule:
+    - cron: '0 7 * * *'      # every day at 07:00 UTC
+  workflow_dispatch: {}       # adds a manual "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Pull latest CyberTutor posts
+        run: node tools/sync-cybertutor.mjs
+
+      - name: Commit if the feed changed
+        run: |
+          if [ -n "$(git status --porcelain js/data.js)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add js/data.js
+            git commit -m "blog: sync latest CyberTutor posts [skip ci]"
+            git push
+          else
+            echo "No new posts — nothing to commit."
+          fi

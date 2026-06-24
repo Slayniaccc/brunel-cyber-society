@@ -116,23 +116,30 @@ Add a `preview` block (note the comma after `tone: ""`):
 
 ---
 
-## Blog posts
+## Blog posts (CyberTutor) — automatic
 
-In `js/data.js`, find the `posts:` list. The **first** post becomes the big
-featured card; the rest become a grid below it. Each post:
+The blog page mirrors the **CyberTutor Substack** for you, so you don't add posts
+by hand. New posts appear on the site within a day of going up on Substack. The
+newest post becomes the big featured card; the rest form the grid below it.
 
-```js
-{
-  date:  "30 may 2026",
-  title: "How we solved 'rusty_lock'",
-  desc:  "A short summary of the post.",
-  tag:   "writeup",
-  tone:  "warm",
-  link:  "#"          // the article link (use "#" if you don't have one yet)
-}
+**How it stays up to date**
+
+- A scheduled GitHub Action (`.github/workflows/update-blog.yml`) runs once a day,
+  reads the CyberTutor RSS feed, and rewrites the post list in `js/data.js`.
+- Want it now? On GitHub open the **Actions** tab → **Sync blog from CyberTutor**
+  → **Run workflow**.
+
+**Refresh it from your own computer** (optional — needs Node 18+). In the project
+folder run:
+
+```
+node tools/sync-cybertutor.mjs
 ```
 
-Add/remove posts the same way as events: copy or delete a `{ ... }` block.
+> ⚠️ **Don't hand-edit the posts.** Everything between the `CYBERTUTOR:START` and
+> `CYBERTUTOR:END` markers in `js/data.js` is overwritten on every sync. To change
+> what a post says, edit it on Substack and re-sync. To show more or fewer posts,
+> change `COUNT` near the top of `tools/sync-cybertutor.mjs` (currently 9).
 
 ---
 

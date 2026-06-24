@@ -18,6 +18,22 @@
     return '<span class="pill ' + esc(item.tone) + '">[' + esc(item.tag) + ']</span>';
   }
 
+  /* external (http/https) links open in a new tab; same-site links don't */
+  function isExternal(link) { return /^https?:/i.test(link || ''); }
+  function linkAttrs(link) { return isExternal(link) ? ' target="_blank" rel="noopener"' : ''; }
+  function readLabel(link) {
+    if (/substack\.com/i.test(link || '')) return 'read on Substack ↗';
+    if (isExternal(link)) return 'read more ↗';
+    return 'read more →';
+  }
+
+  /* optional post image (Substack thumbnail); decorative + lazy-loaded */
+  function mediaImg(src, cls) {
+    return src
+      ? '<div class="' + cls + '"><img src="' + esc(src) + '" alt="" loading="lazy" decoding="async"></div>'
+      : '';
+  }
+
   /* optional rich hover card for an event (e.preview) */
   function previewHtml(p) {
     if (!p) return '';
@@ -56,11 +72,12 @@
   /* a secondary blog post, rendered as a card in the grid below the featured */
   function postRow(p) {
     return (
-      '<a class="post-card" href="' + esc(p.link || '#') + '">' +
+      '<a class="post-card' + (p.image ? ' has-media' : '') + '" href="' + esc(p.link || '#') + '"' + linkAttrs(p.link) + '>' +
+        mediaImg(p.image, 'post-thumb') +
         '<p class="meta">[' + esc(p.tag) + '] · ' + esc(p.date) + '</p>' +
         '<h3>' + esc(p.title) + '</h3>' +
         '<p>' + esc(p.desc) + '</p>' +
-        '<span class="read">read more →</span>' +
+        '<span class="read">' + readLabel(p.link) + '</span>' +
       '</a>'
     );
   }
@@ -117,11 +134,14 @@
   /* the big featured blog card (first post) */
   function featuredHtml(p) {
     return (
-      '<a class="featured" href="' + esc(p.link || '#') + '">' +
-        '<p class="meta">[' + esc(p.tag) + '] · ' + esc(p.date) + '</p>' +
-        '<h3>' + esc(p.title) + '</h3>' +
-        '<p>' + esc(p.desc) + '</p>' +
-        '<span class="read">read more →</span>' +
+      '<a class="featured' + (p.image ? ' has-media' : '') + '" href="' + esc(p.link || '#') + '"' + linkAttrs(p.link) + '>' +
+        mediaImg(p.image, 'featured-media') +
+        '<div class="featured-body">' +
+          '<p class="meta"><span class="featured-flag">featured</span>[' + esc(p.tag) + '] · ' + esc(p.date) + '</p>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          '<p>' + esc(p.desc) + '</p>' +
+          '<span class="read">' + readLabel(p.link) + '</span>' +
+        '</div>' +
       '</a>'
     );
   }

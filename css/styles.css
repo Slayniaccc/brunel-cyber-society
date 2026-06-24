@@ -1037,11 +1037,13 @@ a.bento-cell:hover {
 }
 a.bento-cell:hover::after { transform: scaleX(1); }
 
-/* cell placement */
+/* cell placement — Discord anchors a 2x2 block; the rest flow around it.
+   Email spans two columns so the full address is never truncated. */
 .b-discord { grid-column: 1 / 3; grid-row: 1 / 3; }
-.b-union   { grid-column: 3 / 5; }
+.b-email   { grid-column: span 2; }
 .b-find    { grid-column: 1 / 3; }
-.b-hours   { grid-column: 3 / 5; }
+.b-union   { grid-column: 3 / 5; }
+/* .b-insta and .b-hours auto-place as single cells in the top-right */
 
 /* shared cell internals */
 .bc-icon {
@@ -1142,11 +1144,11 @@ a.bento-cell:hover .bc-icon { border-color: var(--accent); }
 @media (max-width: 880px) {
   .bento { grid-template-columns: repeat(2, 1fr); }
   .b-discord { grid-column: 1 / 3; grid-row: auto; }
-  .b-union, .b-find, .b-hours { grid-column: 1 / 3; }
+  .b-email, .b-find, .b-union { grid-column: 1 / 3; }
 }
 @media (max-width: 540px) {
   .bento { grid-template-columns: 1fr; }
-  .b-discord, .b-union, .b-find, .b-hours { grid-column: 1; }
+  .b-discord, .b-insta, .b-hours, .b-email, .b-find, .b-union { grid-column: auto; grid-row: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pulse { animation: none; }
@@ -1617,4 +1619,219 @@ a.bento-cell:hover {
 .event .date, .event h3, .event p,
 .resource-row .name, .resource-row p {
   text-shadow: 0 1px 10px rgba(11, 11, 13, 0.6), 0 0 2px rgba(11, 11, 13, 0.5);
+}
+
+/* ============================================================
+   BLOG — image-rich featured card & post thumbnails
+   ============================================================ */
+
+/* a gradient placeholder so cards look intentional while images load */
+.featured-media, .post-thumb {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
+    linear-gradient(135deg, #17171b, #0e0e11);
+}
+.featured-media img, .post-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.featured.has-media:hover .featured-media img,
+.post-card.has-media:hover .post-thumb img { transform: scale(1.04); }
+
+/* featured card becomes a two-column magazine layout when it has an image */
+.featured.has-media {
+  display: grid;
+  grid-template-columns: minmax(0, 45%) 1fr;
+  padding: 0;
+  overflow: hidden;
+}
+.featured.has-media .featured-media { min-height: 260px; }
+.featured.has-media .featured-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 36px 40px;
+}
+.featured-flag {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10.5px;
+  color: var(--bg);
+  background: var(--cool);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-right: 10px;
+  vertical-align: 1px;
+}
+.featured.has-media h3 { font-size: 25px; }
+
+/* post-grid thumbnails sit flush to the top of each card */
+.post-card.has-media { padding: 28px; }
+.post-card.has-media .post-thumb {
+  margin: -28px -28px 18px;
+  aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 720px) {
+  .featured.has-media { grid-template-columns: 1fr; }
+  .featured.has-media .featured-media { min-height: 190px; }
+  .featured.has-media .featured-body { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .featured-media img, .post-thumb img,
+  .featured.has-media:hover .featured-media img,
+  .post-card.has-media:hover .post-thumb img { transition: none; transform: none; }
+}
+
+/* ============================================================
+   CONTACT PAGE — a11y, copy-email cell & FAQ accordion
+   ============================================================ */
+
+/* ---- visually hidden, still read by screen readers ---- */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- main landmark + skip link ---- */
+main { display: block; }
+#main { scroll-margin-top: 84px; }   /* keep the target clear of the fixed nav */
+#main:focus { outline: none; }       /* programmatic focus from the skip link, no ring */
+.skip-link {
+  position: fixed;
+  top: 10px; left: 10px;
+  z-index: 100;
+  transform: translateY(calc(-100% - 14px));
+  background: var(--text);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--cool);
+  outline-offset: 2px;
+}
+
+/* ---- email cell: copy-to-clipboard + compose ---- */
+.b-email .bc-email-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: auto;
+}
+.bc-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.bc-copy:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.06); }
+.bc-copy-ico { position: relative; flex: none; width: 16px; height: 16px; }
+.bc-copy-ico svg {
+  position: absolute;
+  inset: 0;
+  width: 16px; height: 16px;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bc-copy .ico-check { opacity: 0; transform: scale(0.5); color: #28c840; }
+.bc-copy.copied { border-color: rgba(40, 200, 64, 0.5); color: #7CFFB2; }
+.bc-copy.copied .ico-copy { opacity: 0; transform: scale(0.5); }
+.bc-copy.copied .ico-check { opacity: 1; transform: scale(1); }
+.bc-copy-addr { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bc-send {
+  font-size: 12.5px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.bc-send:hover { color: var(--text); }
+
+/* ---- FAQ accordion ---- */
+.faq { display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.faq-item[open] {
+  border-color: rgba(111, 201, 216, 0.4);
+  box-shadow: 0 0 24px rgba(233, 230, 227, 0.04);
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 16.5px;
+  color: var(--text);
+  list-style: none;
+  transition: color 0.2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: #fff; }
+/* plus/minus toggle drawn in CSS */
+.faq-icon { position: relative; flex: none; width: 14px; height: 14px; }
+.faq-icon::before, .faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--muted);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s;
+}
+.faq-icon::before { top: 6px; left: 0; width: 14px; height: 2px; border-radius: 2px; }
+.faq-icon::after  { top: 0; left: 6px; width: 2px; height: 14px; border-radius: 2px; }
+.faq-item[open] .faq-icon::after  { transform: scaleY(0); }
+.faq-item[open] .faq-icon::before { background: var(--cool); }
+.faq-a { padding: 0 22px 20px; }
+.faq-a p { color: var(--muted); font-size: 14.5px; line-height: 1.7; margin: 0; }
+.faq-a a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.faq-a a:hover { color: var(--cool); }
+@media (prefers-reduced-motion: no-preference) {
+  .faq-item[open] .faq-a { animation: faq-in 0.3s ease both; }
+  @keyframes faq-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* closing CTA: reuse the blog's .more-cta but match the FAQ card radius */
+.faq-foot { margin-top: 26px; border-radius: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link, .bc-copy-ico svg, .faq-icon::before, .faq-icon::after { transition: none; }
 }

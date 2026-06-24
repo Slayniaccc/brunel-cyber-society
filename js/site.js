@@ -86,6 +86,46 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  /* ----- click-to-copy (e.g. the email address on the contact page) ----- */
+  document.querySelectorAll('.bc-copy[data-copy]').forEach(function (btn) {
+    const hint = btn.querySelector('.bc-copy-hint');
+    let resetTimer;
+    const flash = function (ok) {
+      btn.classList.toggle('copied', ok);
+      if (hint) {
+        /* clear first so an identical repeat message still mutates the
+           live region and gets re-announced by screen readers */
+        hint.textContent = '';
+        hint.textContent = ok ? 'Copied to clipboard' : 'Copy failed — press Ctrl+C';
+      }
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function () {
+        btn.classList.remove('copied');
+        if (hint) hint.textContent = '';
+      }, 1800);
+    };
+    btn.addEventListener('click', function () {
+      const text = btn.getAttribute('data-copy');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { flash(true); }, function () { flash(false); });
+      } else {
+        /* fallback for older browsers / non-secure contexts */
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'absolute';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          flash(true);
+        } catch (e) { flash(false); }
+      }
+    });
+  });
+
   /* ----- for the curious ----- */
   console.log(
     '%cbrunel_cybersec>_ %cnice instinct, opening the console.\n' +
