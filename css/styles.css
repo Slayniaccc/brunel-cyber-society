@@ -227,12 +227,6 @@ h1 .ghost span { position: relative; z-index: 1; }
   margin-top: 18px;
   font-size: 17px;
 }
-.page-head .crumbs {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
 
 /* ---------- buttons & pills ---------- */
 .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -1644,19 +1638,17 @@ a.bento-cell:hover {
 .featured.has-media:hover .featured-media img,
 .post-card.has-media:hover .post-thumb img { transform: scale(1.04); }
 
-/* featured card becomes a two-column magazine layout when it has an image */
+/* featured card: full-width banner image on top, content below */
 .featured.has-media {
-  display: grid;
-  grid-template-columns: minmax(0, 45%) 1fr;
   padding: 0;
   overflow: hidden;
 }
-.featured.has-media .featured-media { min-height: 260px; }
+.featured.has-media .featured-media {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+}
 .featured.has-media .featured-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 36px 40px;
+  padding: 30px 36px 34px;
 }
 .featured-flag {
   font-family: 'JetBrains Mono', monospace;
@@ -1680,15 +1672,23 @@ a.bento-cell:hover {
 }
 
 @media (max-width: 720px) {
-  .featured.has-media { grid-template-columns: 1fr; }
-  .featured.has-media .featured-media { min-height: 190px; }
-  .featured.has-media .featured-body { padding: 24px; }
+  .featured.has-media .featured-media { aspect-ratio: 16 / 9; }
+  .featured.has-media .featured-body { padding: 22px; }
+}
+/* homepage blog teaser: 3 cards across on desktop */
+@media (min-width: 721px) {
+  #home-posts .post-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .featured-media img, .post-thumb img,
   .featured.has-media:hover .featured-media img,
   .post-card.has-media:hover .post-thumb img { transition: none; transform: none; }
 }
+
+/* ---- small layout utilities (replace one-off inline styles) ---- */
+.flush-top { padding-top: 0; }                        /* a section that butts against the one above */
+.section-cta { margin-top: 28px; }                    /* spacing above an inline button after a list */
+.error-content { position: relative; z-index: 2; }   /* 404 content above the wave canvas */
 
 /* ============================================================
    CONTACT PAGE — a11y, copy-email cell & FAQ accordion
@@ -1732,9 +1732,9 @@ main { display: block; }
 /* ---- email cell: copy-to-clipboard + compose ---- */
 .b-email .bc-email-row {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;        /* row layout spreads copy + compose across the wide cell */
   margin-top: auto;
 }
 .bc-copy {

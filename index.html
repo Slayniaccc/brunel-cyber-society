@@ -9,6 +9,9 @@
 <meta property="og:title" content="Brunel Cyber Security Society">
 <meta property="og:description" content="Hands-on hacking workshops, CTF competitions and industry talks at Brunel University London. No experience required.">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Brunel Cyber Security Society">
+<meta name="twitter:description" content="Hands-on hacking workshops, CTF competitions and industry talks at Brunel University London. No experience required.">
 <!-- Link preview image is ready at assets/og-image.png. Once hosted, add:
      <meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.png">
      (OG images must use the full absolute URL, so this needs your real domain.) -->
@@ -17,9 +20,38 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Brunel Cyber Security Society",
+  "alternateName": "Brunel CyberSoc",
+  "description": "Student cyber security society at Brunel University London — hands-on hacking workshops, CTF competitions and industry talks. No experience required.",
+  "email": "cybersec@brunel.ac.uk",
+  "sameAs": [
+    "https://discord.com/invite/YUXxSN5k",
+    "https://www.instagram.com/cybersoc.brunel/",
+    "https://github.com/brunel-cybersec",
+    "https://www.youtube.com/@CyberTutor24"
+  ],
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Brunel University London",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kingston Lane",
+      "addressLocality": "Uxbridge",
+      "addressRegion": "London",
+      "postalCode": "UB8 3PH",
+      "addressCountry": "GB"
+    }
+  }
+}
+</script>
 <script>try{if(sessionStorage.getItem("booted"))document.documentElement.classList.add("booted");}catch(e){}</script>
 </head>
 <body class="home">
+<a class="skip-link" href="#main">Skip to content</a>
 <!-- Curious? Good. BRUNEL{v1ew_s0urce_h4cker}. Bring this to a workshop. -->
 <div id="preloader" role="status" aria-label="Loading">
   <div class="pl-inner">
@@ -45,6 +77,7 @@
   </div>
 </nav>
 
+<main id="main" tabindex="-1">
 <header class="hero">
   <canvas id="waves" aria-hidden="true"></canvas>
   <div class="hero-inner">
@@ -79,7 +112,16 @@
     <h2>Upcoming events</h2>
   </div>
   <div id="home-events"></div>
-  <p style="margin-top: 28px;"><a class="btn ghost-btn" href="events.html">Full programme + CTF team →</a></p>
+  <p class="section-cta"><a class="btn ghost-btn" href="events.html">Full programme + CTF team →</a></p>
+</section>
+
+<section class="reveal" id="latest">
+  <div class="section-head">
+    <span class="tag">03</span>
+    <h2>Latest from the blog</h2>
+  </div>
+  <div id="home-posts"></div>
+  <p class="section-cta"><a class="btn ghost-btn" href="blog.html">Read the blog →</a></p>
 </section>
 
 <section class="reveal" id="join">
@@ -92,6 +134,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <span>© 2026 Brunel Cyber Security Society x CyberTutor</span>

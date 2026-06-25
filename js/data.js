@@ -207,9 +207,9 @@ window.SITE_DATA = {
   committee: [
     {
       name: "Mohammed Zuoriki",
-      role: "chair / president",
+      role: "founder / president",
       initials: "MZ",
-      photo: "assets/pfp_Mohammed.png",
+      photo: "assets/IMG_4556.jpg",
       accent: "warm",
       bio: "",
       duties: [
@@ -228,9 +228,9 @@ window.SITE_DATA = {
       accent: "cool",
       bio: "",
       duties: [
-        "Support the Chair/President in running the society",
+        "Support the Founder/President in running the society",
         "Help with effective committee management",
-        "Act as Union contact when the Chair and Secretary are unavailable"
+        "Act as Union contact when the Founder/President and Secretary are unavailable"
       ]
     },
     {
@@ -239,12 +239,8 @@ window.SITE_DATA = {
       initials: "AA",
       photo: "assets/abdirahman.jpg",
       accent: "warm",
-      bio: "",
-      duties: [
-        "Ensure all meetings are effectively organised",
-        "Take committee meeting minutes and share them with the Union",
-        "Be the secondary point of contact for the Union"
-      ]
+      bio: "Hello! I'm taking on the Secretary role this year.I'm here to keep things running smoothly behind the scenes, taking notes during meetings so nothing gets lost, sharing them with the Union so everyone's in the loop, and stepping in as a friendly point of contact whenever the Founder's not around. If you've ever got a question about what was discussed or decided, don't hesitate to reach out, that's exactly what I'm here for.",
+      duties: []
     },
     {
       name: "",

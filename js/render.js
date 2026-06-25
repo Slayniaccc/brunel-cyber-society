@@ -38,7 +38,7 @@
   function previewHtml(p) {
     if (!p) return '';
     const img = p.img
-      ? '<img class="ev-img" src="' + esc(p.img) + '" alt="" onerror="this.remove()">'
+      ? '<img class="ev-img" src="' + esc(p.img) + '" alt="" loading="lazy" decoding="async" onerror="this.remove()">'
       : '';
     return (
       '<div class="preview"><div class="ev-card">' +
@@ -109,7 +109,7 @@
   function memberRow(m) {
     const accent = (m.accent === 'cool') ? 'cool' : 'warm';
     const img = m.photo
-      ? '<img src="' + esc(m.photo) + '" alt="' + esc(m.name || '') + '" onerror="this.remove()">'
+      ? '<img src="' + esc(m.photo) + '" alt="' + esc(m.name || '') + '" width="56" height="56" loading="lazy" decoding="async" onerror="this.remove()">'
       : '';
     const name = m.name
       ? '<h3>' + esc(m.name) + '</h3>'
@@ -158,6 +158,12 @@
   renderList('reads-list', d.reads, readRow);                        /* blog: further reading */
   renderList('learn-list', d.learn, learnRow);                       /* resources: learn with */
   renderList('committee-list', d.committee, memberRow);              /* committee page */
+
+  /* homepage: teaser of the latest 3 blog posts */
+  const homePosts = document.getElementById('home-posts');
+  if (homePosts && d.posts && d.posts.length) {
+    homePosts.innerHTML = '<div class="post-grid">' + d.posts.slice(0, 3).map(postRow).join('') + '</div>';
+  }
 
   /* blog page: featured first post + grid of the rest */
   const blog = document.getElementById('blog-list');

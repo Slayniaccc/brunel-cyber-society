@@ -14,6 +14,7 @@
 <script>try{if(sessionStorage.getItem("booted"))document.documentElement.classList.add("booted");}catch(e){}</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <!-- Curious? Good. BRUNEL{v1ew_s0urce_h4cker}. Bring this to a workshop. -->
 <div id="preloader" role="status" aria-label="Loading">
   <div class="pl-inner">
@@ -39,9 +40,9 @@
   </div>
 </nav>
 
-<main class="error-page">
+<main id="main" tabindex="-1" class="error-page">
   <canvas id="waves" aria-hidden="true"></canvas>
-  <div style="position: relative; z-index: 2;">
+  <div class="error-content">
     <h1 class="code">404</h1>
     <p class="msg">// flag not found at this address</p>
     <a class="btn solid" href="index.html">Return to base</a>
