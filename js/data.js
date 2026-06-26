@@ -211,14 +211,8 @@ window.SITE_DATA = {
       initials: "MZ",
       photo: "assets/IMG_4556.jpg",
       accent: "warm",
-      bio: "",
-      duties: [
-        "Provide society leadership",
-        "Ensure effective committee management",
-        "Be the public face of the society",
-        "Be the main point of contact for the Union",
-        "Ensure all members have society memberships"
-      ]
+      bio: "Hello! I’m your Society President and I help keep everything running smoothly. I provide leadership, keep the committee organised, act as the main contact with the Union, and represent the society at events. I also make sure everyone is properly signed up as a member. I’m the crazy digital security guy, so if anything needs sorting, I’m always on it :) ",
+      duties: []
     },
     {
       name: "",
