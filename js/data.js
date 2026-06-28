@@ -82,6 +82,33 @@ window.SITE_DATA = {
   /* CYBERTUTOR:START */
   posts: [
     {
+      date:  "27 jun 2026",
+      title: "Meeting Trump's 2030 Quantum Deadline Will be Expensive, Complex",
+      desc:  "Organizations face significant challenges and costs in becoming quantum-ready over the next five years, as the US government accelerates efforts to lead in quantum technology and secure against quantum-enabled…",
+      tag:   "news",
+      tone:  "",
+      image: "https://substackcdn.com/image/fetch/$s_!U6RM!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ded1955-89bb-42f4-8ea9-223651e210a1_1536x1024.png",
+      link:  "https://mohammedzuoriki.substack.com/p/meeting-trumps-2030-quantum-deadline"
+    },
+    {
+      date:  "26 jun 2026",
+      title: "In Less Than 24 Hours, Attackers Weaponize Cisco CUCM Flaw",
+      desc:  "Attackers have rapidly exploited a critical vulnerability (CVE-2026-20230) in Cisco Unified Communications Manager (CUCM), allowing unauthenticated remote code execution and root access via server-side request…",
+      tag:   "vuln",
+      tone:  "warm",
+      image: "https://substackcdn.com/image/fetch/$s_!ZhsG!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd62dc583-4cd1-444b-8365-490de6dc7a9f_1536x1024.png",
+      link:  "https://mohammedzuoriki.substack.com/p/in-less-than-24-hours-attackers-weaponize"
+    },
+    {
+      date:  "25 jun 2026",
+      title: "Europe Evolves Into Ransomware's Favorite Region",
+      desc:  "The resurgence of ransomware in Europe during early 2026 marks a significant shift, with attacks increasing by 55% compared to the previous year, driven by factors such as US market saturation, AI-assisted targeting,…",
+      tag:   "malware",
+      tone:  "warm",
+      image: "https://substackcdn.com/image/fetch/$s_!3X0c!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7f2a9413-f5c0-4f30-865f-888dd1436626_1536x1024.png",
+      link:  "https://mohammedzuoriki.substack.com/p/europe-evolves-into-ransomwares-favorite"
+    },
+    {
       date:  "24 jun 2026",
       title: "'Cordyceps': Mushrooming Malicious Pull Requests Threaten Developer Workflows",
       desc:  "A new vulnerability called “Cordyceps” exposes weaknesses in CI/CD workflows across organizations, allowing attackers to exploit pull requests to compromise software supply chains by targeting high-privilege…",
@@ -134,33 +161,6 @@ window.SITE_DATA = {
       tone:  "",
       image: "https://substackcdn.com/image/fetch/$s_!D-la!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7030a500-806d-4403-8d61-8b8888efa6a0_1024x576.jpeg",
       link:  "https://mohammedzuoriki.substack.com/p/sweeping-credential-harvesting-heist"
-    },
-    {
-      date:  "17 jun 2026",
-      title: "SprySOCKS Windows Variant Abuses Kernel Drivers to Evade Detection",
-      desc:  "FishMonger, a notorious threat group linked to a Chinese tech company, has expanded its toolkit by developing a sophisticated Windows backdoor that employs kernel drivers for stealth, following its previous Linux…",
-      tag:   "news",
-      tone:  "",
-      image: "https://substackcdn.com/image/fetch/$s_!mJn7!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff2705f0b-b957-49f7-846d-b13c02fc1651_1536x1024.png",
-      link:  "https://mohammedzuoriki.substack.com/p/sprysocks-windows-variant-abuses"
-    },
-    {
-      date:  "16 jun 2026",
-      title: "Copilot 'SearchLeak' Attack Allows 1-Click Data Theft",
-      desc:  "Researchers from Varonis Threat Labs uncovered a critical Microsoft Copilot vulnerability dubbed “SearchLeak,” which allows attackers to silently exfiltrate sensitive user files, emails, and organizational documents…",
-      tag:   "breach",
-      tone:  "",
-      image: "https://substackcdn.com/image/fetch/$s_!-lnp!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0def5b03-5d85-4e86-9390-255376596d06_1536x1024.png",
-      link:  "https://mohammedzuoriki.substack.com/p/copilot-searchleak-attack-allows"
-    },
-    {
-      date:  "15 jun 2026",
-      title: "Miasma Supply Chain Worm Burrows Into 73 Microsoft Repositories",
-      desc:  "In June, Microsoft’s code repositories were targeted by the Miasma variant of the Shai-Hulud worm, causing widespread disruptions to CI/CD workflows, especially affecting GitHub Actions like Azure/functions-action,…",
-      tag:   "supply chain",
-      tone:  "warm",
-      image: "https://substackcdn.com/image/fetch/$s_!Wn_A!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44e65711-0989-4d7b-9a13-5298e5ab499e_1536x1024.png",
-      link:  "https://mohammedzuoriki.substack.com/p/miasma-supply-chain-worm-burrows"
     }
   ],
   /* CYBERTUTOR:END */
